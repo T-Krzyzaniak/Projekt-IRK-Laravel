@@ -15,28 +15,30 @@ Class RoleSeeder extends Seeder{
     public function run():void{
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
             Role::create(['name' => RoleType::ADMIN->value]);
-            Role::create(['name' => RoleType::PHYSICIAN->value]);
-            Role::create(['name' => RoleType::PATIENT->value]);
+            Role::create(['name' => RoleType::WORKER->value]);
+            Role::create(['name' => RoleType::CANDIDATE->value]);
         
         
         
 
             $userRole = Role::findByName(RoleType::ADMIN->value);
-            $userRole->givePermissionTo(PermissionType::USER_ACCESS);
-            $userRole->givePermissionTo(PermissionType::USER_MANAGE);
+            $userRole->givePermissionTo(PermissionType::CANDIDATE_ACCESS);
+            $userRole->givePermissionTo(PermissionType::CANDIDATE_MANAGE);
             $userRole->givePermissionTo(PermissionType::WORKER_ACCESS);
             $userRole->givePermissionTo(PermissionType::WORKER_MANAGE);
-            $userRole->givePermissionTo(PermissionType::PATIENT_ACCESS);
-            $userRole->givePermissionTo(PermissionType::PATIENT_MANAGE);
+            $userRole->givePermissionTo(PermissionType::ADMIN_ACCESS);
+            $userRole->givePermissionTo(PermissionType::ADMIN_MANAGE);
 
-            $userRole = Role::findByName(RoleType::PHYSICIAN->value);
-            $userRole->givePermissionTo(PermissionType::USER_ACCESS);
+            $userRole = Role::findByName(RoleType::WORKER->value);
+            $userRole->givePermissionTo(PermissionType::CANDIDATE_ACCESS);
+            $userRole->givePermissionTo(PermissionType::CANDIDATE_MANAGE);
             $userRole->givePermissionTo(PermissionType::WORKER_ACCESS);
-            $userRole->givePermissionTo(PermissionType::PATIENT_ACCESS);
-            $userRole->givePermissionTo(PermissionType::PATIENT_MANAGE);
 
-            $userRole = Role::findByName(RoleType::PATIENT->value);
+            $userRole = Role::findByName(RoleType::CANDIDATE->value);
             $userRole->givePermissionTo(PermissionType::WORKER_ACCESS);
+            $userRole->givePermissionTo(PermissionType::CANDIDATE_ACCESS);
+            $userRole->givePermissionTo(PermissionType::CANDIDATE_MANAGE);
+            
     }
 
 }

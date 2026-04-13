@@ -6,6 +6,6 @@ enum RoleType: string{
 
 use EnumToArray;
 case ADMIN = 'admin';
-case PHYSICIAN = 'physician';
-case PATIENT = 'patient';
+case WORKER = 'pracownik';
+case CANDIDATE = 'kandydat';
 }

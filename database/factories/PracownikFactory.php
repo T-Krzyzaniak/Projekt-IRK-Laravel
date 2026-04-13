@@ -19,7 +19,7 @@ class PracownikFactory extends Factory
             'name' => fake()->firstName(),
             'surname' => fake()->lastName(),
             'telNumb' => fake()->phoneNumber(),
-            'position' => fake()->randomElement(['Lekarz Rezydent','Lekarz Rodzinny','Pediatra','Dermatolog','Mlodszy Technik Medycyny','Internista','Fizjoterapeuta','Dietetyk']),
+            'position' => fake()->randomElement(['Matematyk','Humanista','Filozof','Geograf','Chemik','Internista','Psycholog','Wuefista']),
         ];
     }
 }

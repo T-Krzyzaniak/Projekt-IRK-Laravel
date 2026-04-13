@@ -13,8 +13,8 @@ class PermissionSeeder extends Seeder{
     public function run():void{
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
         $permissions = [
-            PermissionType::USER_ACCESS->value,
-            PermissionType::USER_MANAGE->value,
+            PermissionType::CANDIDATE_ACCESS->value,
+            PermissionType::CANDIDATE_MANAGE->value,
             PermissionType::WORKER_ACCESS->value,
             PermissionType::WORKER_MANAGE->value,
             PermissionType::ADMIN_ACCESS->value,

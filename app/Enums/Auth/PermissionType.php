@@ -5,11 +5,11 @@ use App\Enums\Traits\EnumToArray;
 enum PermissionType: string
 {
     use EnumToArray;
-    case USER_ACCESS = 'user access';
-    case USER_MANAGE = 'user manage';
+    case CANDIDATE_ACCESS = 'user access';
+    case CANDIDATE_MANAGE = 'user manage';
     case WORKER_ACCESS = 'worker access';
     case WORKER_MANAGE = 'worker manage';
-    case PATIENT_ACCESS = 'patient access';
-    case PATIENT_MANAGE = 'patient manage';
+    case ADMIN_ACCESS = 'admin access';
+    case ADMIN_MANAGE = 'admin manage';
  
 }

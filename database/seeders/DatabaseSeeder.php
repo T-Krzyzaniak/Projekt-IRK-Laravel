@@ -23,8 +23,12 @@ class DatabaseSeeder extends Seeder
          $this->call([
             PracownikSeeder::class
         ]);
+        $this->call([
+            CandidateSeeder::class
+        ]);
 
         User::factory(10)->withoutTwoFactor()->create();
+
 
 
 
@@ -37,6 +41,6 @@ class DatabaseSeeder extends Seeder
         User::factory()->withoutTwoFactor()->create([
             'name' => 'Test User1',
             'email' => 'test1@example.com',
-        ])->assignRole(RoleType::PHYSICIAN->value);
+        ])->assignRole(RoleType::WORKER->value);
     }
 }
