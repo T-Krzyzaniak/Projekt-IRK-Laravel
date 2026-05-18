@@ -21,7 +21,7 @@ class CandidateFactory extends Factory
         'surname' => fake()->lastName(),
         'telNumb' => fake()->phoneNumber(),
         'PESEL' => fake('pl_PL')->pesel(),
-        'age' => fake()->numerify('##'),
+        'age' => fake()->numberBetween(19, 36),
         'math' => fake()->randomFloat(2, 2, 6),
         'polish' => fake()->randomFloat(2, 2, 6),
         'english' => fake()->randomFloat(2, 2, 6),
