@@ -35,7 +35,6 @@ Class RoleSeeder extends Seeder{
             $userRole->givePermissionTo(PermissionType::WORKER_ACCESS);
 
             $userRole = Role::findByName(RoleType::CANDIDATE->value);
-            $userRole->givePermissionTo(PermissionType::WORKER_ACCESS);
             $userRole->givePermissionTo(PermissionType::CANDIDATE_ACCESS);
             $userRole->givePermissionTo(PermissionType::CANDIDATE_MANAGE);
             

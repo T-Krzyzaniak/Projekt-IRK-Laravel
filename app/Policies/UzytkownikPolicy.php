@@ -12,7 +12,7 @@ class UzytkownikPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->can('worker access');
     }
 
     /**
@@ -20,7 +20,7 @@ class UzytkownikPolicy
      */
     public function view(User $user, User $model): bool
     {
-        return false;
+        return $user->can('worker access');
     }
 
     /**

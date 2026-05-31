@@ -13,7 +13,7 @@ class PracownikPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('user access');
+        return $user->can('worker access');
     
     }
 
@@ -22,7 +22,7 @@ class PracownikPolicy
      */
     public function view(User $user, Pracownik $pracownik): bool
     {
-        return false;
+        return $user->can('worker access');
     }
 
     /**
@@ -30,7 +30,7 @@ class PracownikPolicy
      */
     public function create(User $user): bool
     {
-                return $user->can('user manage');
+        return $user->can('worker access');
     }
 
     /**
@@ -38,7 +38,7 @@ class PracownikPolicy
      */
     public function update(User $user, Pracownik $pracownik): bool
     {
-                return $user->can('user manage');
+        return $user->can('worker access');
     }
 
     /**
@@ -46,7 +46,7 @@ class PracownikPolicy
      */
     public function delete(User $user, Pracownik $pracownik): bool
     {
-                return $user->can('user manage');
+        return $user->can('worker access');
     }
 
     /**

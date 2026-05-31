@@ -13,7 +13,7 @@ class patientsPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('patient access');
+        return $user->can('worker access');
     }
 
     /**
@@ -29,7 +29,7 @@ class patientsPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('patient manage');
+        return $user->can('worker access');
     }
 
     /**
@@ -37,7 +37,7 @@ class patientsPolicy
      */
     public function update(User $user, patients $patients): bool
     {
-        return $user->can('patient manage');
+        return $user->can('worker access');
     }
 
     /**
@@ -45,7 +45,7 @@ class patientsPolicy
      */
     public function delete(User $user, patients $patients): bool
     {
-        return $user->can('patient manage');
+        return $user->can('worker access');
     }
 
     /**
@@ -53,7 +53,7 @@ class patientsPolicy
      */
     public function restore(User $user, patients $patients): bool
     {
-        return $user->can('patient manage');
+        return $user->can('worker access');
     }
 
     /**

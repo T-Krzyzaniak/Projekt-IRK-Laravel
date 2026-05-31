@@ -113,6 +113,38 @@ final class CandidateTable extends PowerGridComponent
         $this->js('alert('.$rowId.')');
     }
 
+    #[\Livewire\Attributes\On('delete')]
+public function delete($id): void
+{
+    $candidates = Candidate::findOrFail($id);
+
+    $this->authorize('delete', $candidates);
+
+    $candidates->delete();
+}
+
+    public function actions(Candidate $row): array
+    {
+        return [
+            Button::add('edit')
+            ->slot('Edytuj')
+            ->class('bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs')
+            ->route('candidate.edit', ['candidate' => $row->id]),
+            Button::add('delete')
+            ->slot('Usuń')
+            ->class('bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs ml-2')
+            ->dispatch('delete', ['id' => $row->id])
+    ];
+        
+    }
+    /*
+    #[\Livewire\Attributes\On('edit')]
+    public function edit($rowId): void
+    {
+        $this->js('alert('.$rowId.')');
+    }
+
+    
     public function actions(Candidate $row): array
     {
         return [
@@ -123,7 +155,7 @@ final class CandidateTable extends PowerGridComponent
                 ->dispatch('edit', ['rowId' => $row->id])
         ];
     }
-
+        */
     /*
     public function actionRules($row): array
     {

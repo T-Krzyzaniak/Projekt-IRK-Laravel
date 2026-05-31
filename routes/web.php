@@ -4,6 +4,7 @@ use App\Http\Controllers\PracownikController;
 use App\Http\Controllers\UzytkownikController;
 use App\Http\Controllers\patientsController;
 use App\Livewire\patientsForm;
+use App\Livewire\CandidateForm;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -31,7 +32,16 @@ Route::get('/patients', function () {
     return view('patients.index');
 })->name('patients.index');
 
+Route::get('/candidate', function () {
+    return view('candidate.index');
+})->name('candidate.index');
+
+Route::get('/candidate/{candidate}/edit', CandidateForm::class)->name('candidate.edit');
+
 Route::get('/patients/{patients}/edit', patientsForm::class)->name('patients.edit');
+
+
+
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

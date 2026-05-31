@@ -13,7 +13,7 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Menu Nawigacyjne')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Ekran Startowy') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" :href="route('patients.index')" :current="request()->routeIs('patients.index')" wire:navigate>{{ __('Pacjenci') }}</flux:navlist.item>
+                    <flux:navlist.item icon="home" :href="route('candidate.index')" :current="request()->routeIs('candidate.index')" wire:navigate>{{ __('Kandydaci') }}</flux:navlist.item>
                     <flux:navlist.item icon="home" :href="route('pracowniks.index')" :current="request()->routeIs('pracowniks.index')" wire:navigate>{{ __('Pracownicy') }}</flux:navlist.item>
                     <flux:navlist.item icon="home" :href="route('uzytkownicy.index')" :current="request()->routeIs('uzytkownicy')" wire:navigate>{{ __('Uzytkownicy') }}</flux:navlist.item>
                     <flux:navlist.item icon="home" :href="route('log-viewer.index')" :current="request()->routeIs('log-viewer')" wire:navigate>{{ __('Logi') }}</flux:navlist.item>
