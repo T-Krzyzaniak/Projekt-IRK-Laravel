@@ -3,6 +3,7 @@
 use App\Http\Controllers\PracownikController;
 use App\Http\Controllers\UzytkownikController;
 use App\Http\Controllers\patientsController;
+use App\Http\Controllers\CandidateController;
 use App\Livewire\patientsForm;
 use App\Livewire\CandidateForm;
 use App\Livewire\Settings\Appearance;
@@ -27,6 +28,8 @@ Route::get('/uzytkownicy', [UzytkownikController::class,'index'])->name('uzytkow
 Route::post('/uzytkownicy/{user}/role', [UzytkownikController::class, 'updateRole'])->name('uzytkownicy.update-role');
 
 Route::get('/patients/create', [patientsController::class, 'create'])->name('patients.create');
+Route::get('/Candidate/create', [CandidateController::class, 'create'])->name('Candidate.create');
+
 
 Route::get('/patients', function () {
     return view('patients.index');

@@ -22,7 +22,12 @@ return new class extends Migration
             $table->float('polish');
             $table->float('english');
             $table->timestamps();
+            $table->foreignId('user_id')
+            ->nullable()
+                ->constrained('users')
+                ->onDelete('cascade');
             $table->unique(['PESEL']);
+            $table->unique(['user_id']);
         });
     }
 

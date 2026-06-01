@@ -29,10 +29,16 @@ final class CandidateTable extends PowerGridComponent
         ];
     }
 
-    public function datasource(): Builder
-    {
+   public function datasource(): \Illuminate\Database\Eloquent\Builder
+{
+    $user = auth()->user();
+
+    if ($user && $user->hasRole('admin')) {
         return Candidate::query();
+    } else{
+    return Candidate::query()->where('user_id', $user->id);
     }
+}
 
     public function relationSearch(): array
     {
@@ -51,7 +57,8 @@ final class CandidateTable extends PowerGridComponent
             ->add('math')
             ->add('polish')
             ->add('english')
-            ->add('created_at');
+            ->add('created_at')
+            ->add('user_id');
     }
 
     public function columns(): array
@@ -90,12 +97,10 @@ final class CandidateTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Created at', 'created_at_formatted', 'created_at')
-                ->sortable(),
-
             Column::make('Created at', 'created_at')
                 ->sortable()
                 ->searchable(),
+            Column::make('User_id', 'user_id'),
 
             Column::action('Action')
         ];
@@ -137,6 +142,21 @@ public function delete($id): void
     ];
         
     }
+    public function actionRules(): array
+{
+    $user = auth()->user();
+
+    return [
+        \PowerComponents\LivewirePowerGrid\Facades\Rule::button('edit')
+            ->when(fn($row) => !$user->hasRole('ADMIN') && $row->user_id !== $user->id)
+            ->hide(),
+
+    
+        \PowerComponents\LivewirePowerGrid\Facades\Rule::button('delete')
+            ->when(fn($row) => !$user->hasRole('ADMIN') && $row->user_id !== $user->id)
+            ->hide(),
+    ];
+}
     /*
     #[\Livewire\Attributes\On('edit')]
     public function edit($rowId): void

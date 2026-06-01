@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Candidate;
 use App\Enums\Auth\RoleType;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -27,7 +28,11 @@ class DatabaseSeeder extends Seeder
             CandidateSeeder::class
         ]);
 
-        User::factory(10)->withoutTwoFactor()->create();
+        $Grupa1 = User::factory(10)->withoutTwoFactor()->create();   
+        Candidate::factory(10)
+        ->sequence(fn ($sequence) => ['user_id' => $Grupa1[$sequence->index]->id])
+        ->create();
+
 
 
 
