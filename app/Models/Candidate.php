@@ -18,5 +18,6 @@ class Candidate extends Model
         'math',
         'polish',
         'english',
+        'user_id',
     ];
 }

@@ -46,13 +46,19 @@ class CandidateForm extends Component
 
     public function save(): void
     {
-        $this->validate();
+       $this->validate();
 
-        Candidate::updateOrCreate(
-            ['id' => $this->Candidate?->id],
-            $this->only(['name', 'surname', 'telNumb', 'PESEL','age', 'math','polish','english'])
-        );
-        $this->redirectRoute('candidate.index');
+    $data = $this->only(['name', 'surname', 'telNumb', 'PESEL', 'age', 'math', 'polish', 'english']);
+    
+    if (!$this->Candidate?->exists) {
+        $data['user_id'] = auth()->id();
+    }
+    Candidate::updateOrCreate(
+        ['id' => $this->Candidate?->id],
+        $data
+    );
+
+    $this->redirectRoute('candidate.index');
     }
 
 

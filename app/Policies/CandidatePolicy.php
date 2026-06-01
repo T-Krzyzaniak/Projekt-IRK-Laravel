@@ -13,7 +13,7 @@ class CandidatePolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('worker access');
+        return $user->can('user access');
     }
 
     /**
@@ -21,7 +21,7 @@ class CandidatePolicy
      */
     public function view(User $user, Candidate $candidate): bool
     {
-        return $user->can('worker access');
+        return $user->can('user access');
     }
 
     /**
@@ -29,7 +29,12 @@ class CandidatePolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('worker manage');
+        if ($user->can('worker manage')){
+            return true;
+        }
+        $hasCandidate = Candidate::where('user_id', $user->id)->exists();
+
+        return !$hasCandidate;
     }
 
     /**
@@ -37,7 +42,8 @@ class CandidatePolicy
      */
     public function update(User $user, Candidate $candidate): bool
     {
-        return $user->can('worker manage');
+        return $user->can('user access');
+        
     }
 
     /**

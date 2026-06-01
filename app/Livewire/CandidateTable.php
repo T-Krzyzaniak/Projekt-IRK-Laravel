@@ -148,12 +148,12 @@ public function delete($id): void
 
     return [
         \PowerComponents\LivewirePowerGrid\Facades\Rule::button('edit')
-            ->when(fn($row) => !$user->hasRole('ADMIN') && $row->user_id !== $user->id)
+            ->when(fn($row) => !$user->hasRole('admin') && $row->user_id !== $user->id)
             ->hide(),
 
     
         \PowerComponents\LivewirePowerGrid\Facades\Rule::button('delete')
-            ->when(fn($row) => !$user->hasRole('ADMIN') && $row->user_id !== $user->id)
+            ->when(fn($row) => !$user->hasRole('admin') && $row->user_id !== $user->id)
             ->hide(),
     ];
 }
