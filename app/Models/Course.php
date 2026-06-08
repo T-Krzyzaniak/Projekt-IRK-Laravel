@@ -12,6 +12,8 @@ class Course extends Model
     protected $fillable = [
         'name',
         'collegium',
-        'tryb' 
+        'tryb',
+        'semestry',
+        'oplata', 
     ];
 }

@@ -33,7 +33,7 @@ final class CandidateTable extends PowerGridComponent
 {
     $user = auth()->user();
 
-    if ($user && $user->hasRole('admin')) {
+    if ($user && $user->hasRole('pracownik')) {
         return Candidate::query();
     } else{
     return Candidate::query()->where('user_id', $user->id);
@@ -148,12 +148,12 @@ public function delete($id): void
 
     return [
         \PowerComponents\LivewirePowerGrid\Facades\Rule::button('edit')
-            ->when(fn($row) => !$user->hasRole('admin') && $row->user_id !== $user->id)
+            ->when(fn($row) => !$user->hasRole('pracownik') && $row->user_id !== $user->id)
             ->hide(),
 
     
         \PowerComponents\LivewirePowerGrid\Facades\Rule::button('delete')
-            ->when(fn($row) => !$user->hasRole('admin') && $row->user_id !== $user->id)
+            ->when(fn($row) => !$user->hasRole('pracownik') && $row->user_id !== $user->id)
             ->hide(),
     ];
 }

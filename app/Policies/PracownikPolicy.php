@@ -30,7 +30,7 @@ class PracownikPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('worker access');
+        return $user->can('admin manage');
     }
 
     /**
@@ -38,7 +38,7 @@ class PracownikPolicy
      */
     public function update(User $user, Pracownik $pracownik): bool
     {
-        return $user->can('worker access');
+        return $user->can('admin manage');
     }
 
     /**
@@ -46,7 +46,7 @@ class PracownikPolicy
      */
     public function delete(User $user, Pracownik $pracownik): bool
     {
-        return $user->can('worker access');
+        return $user->can('admin manage');
     }
 
     /**

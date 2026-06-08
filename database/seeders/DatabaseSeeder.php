@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CandidateSeeder::class
         ]);
+        $this->call([
+            CourseSeeder::class
+        ]);
 
         $Grupa1 = User::factory(10)->withoutTwoFactor()->create();   
         Candidate::factory(10)

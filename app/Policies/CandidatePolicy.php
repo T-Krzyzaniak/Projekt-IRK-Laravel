@@ -29,7 +29,7 @@ class CandidatePolicy
      */
     public function create(User $user): bool
     {
-        if ($user->can('worker manage')){
+        if ($user->can('worker access')){
             return true;
         }
         $hasCandidate = Candidate::where('user_id', $user->id)->exists();
@@ -51,7 +51,7 @@ class CandidatePolicy
      */
     public function delete(User $user, Candidate $candidate): bool
     {
-        return $user->can('worker manage');
+        return $user->can('worker access');
     }
 
     /**
@@ -59,7 +59,7 @@ class CandidatePolicy
      */
     public function restore(User $user, Candidate $candidate): bool
     {
-        return $user->can('worker manage');
+        return $user->can('worker access');
     }
 
     /**
@@ -67,6 +67,6 @@ class CandidatePolicy
      */
     public function forceDelete(User $user, Candidate $candidate): bool
     {
-        return $user->can('worker manage');
+        return $user->can('worker access');
     }
 }

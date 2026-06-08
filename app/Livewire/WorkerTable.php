@@ -73,8 +73,6 @@ final class WorkerTable extends PowerGridComponent
                 Column::make('Number', 'telNumb')
                 ->searchable()
                 ->sortable(),
-
-            Column::make('Created at', 'created_at'),
             
 
             Column::make('Created at', 'created_at_formatted', 'created_at')
@@ -114,6 +112,7 @@ final class WorkerTable extends PowerGridComponent
     #[\Livewire\Attributes\On('delete')]
 public function delete($id): void
 {
+    
     $pracownik = Pracownik::findOrFail($id);
 
     $this->authorize('delete', $pracownik);
@@ -125,15 +124,22 @@ $this->js('alert("Pracownik usunięty")');}
 
 
 
-    /*
+    
     public function actionRules(Pracownik $row): array
     {
+            $user = auth()->user();
+
        return [
-            // Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
-                ->hide(),
+        
+           \PowerComponents\LivewirePowerGrid\Facades\Rule::button('edit')
+            ->when(fn($row) => !$user->hasRole('admin') && $row->user_id !== $user->id)
+            ->hide(),
+
+    
+        \PowerComponents\LivewirePowerGrid\Facades\Rule::button('delete')
+            ->when(fn($row) => !$user->hasRole('admin') && $row->user_id !== $user->id)
+            ->hide(),
         ];
     }
-    */
+
 }
