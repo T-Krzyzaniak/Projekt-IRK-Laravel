@@ -15,11 +15,7 @@ class PracownikSeeder extends Seeder
     public function run(): void
     {
         //
-        $Grupa = Pracownik::factory(10)->create();
-
-        patients::factory(20)
-        ->recycle($Grupa)
-        ->create();
+        Pracownik::factory(10)->create();
 
 
     }

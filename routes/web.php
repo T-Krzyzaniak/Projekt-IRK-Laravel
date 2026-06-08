@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\PracownikController;
 use App\Http\Controllers\UzytkownikController;
-use App\Http\Controllers\patientsController;
 use App\Http\Controllers\CandidateController;
-use App\Livewire\patientsForm;
 use App\Livewire\CandidateForm;
 use App\Livewire\CourseForm;
 use App\Http\Controllers\CourseController;
@@ -29,15 +27,12 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/uzytkownicy', [UzytkownikController::class,'index'])->name('uzytkownicy.index');
 Route::post('/uzytkownicy/{user}/role', [UzytkownikController::class, 'updateRole'])->name('uzytkownicy.update-role');
 
-Route::get('/patients/create', [patientsController::class, 'create'])->name('patients.create');
 Route::get('/Candidate/create', [CandidateController::class, 'create'])->name('Candidate.create');
 Route::get('/Course/create', [CourseController::class, 'create'])->name('Course.create');
 
 
 
-Route::get('/patients', function () {
-    return view('patients.index');
-})->name('patients.index');
+
 
 Route::get('/candidate', function () {
     return view('candidate.index');
@@ -55,7 +50,6 @@ Route::get('/candidate/{candidate}/edit', CandidateForm::class)->name('candidate
 
 Route::get('/course/{course}/edit', CourseForm::class)->name('course.edit');
 
-Route::get('/patients/{patients}/edit', patientsForm::class)->name('patients.edit');
 
 
 
