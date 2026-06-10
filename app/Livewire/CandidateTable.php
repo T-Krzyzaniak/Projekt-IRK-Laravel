@@ -64,16 +64,16 @@ final class CandidateTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
-            Column::make('Name', 'name')
+            Column::make('Identyfikator', 'id'),
+            Column::make('Imie', 'name')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Surname', 'surname')
+            Column::make('Nazwisko', 'surname')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('TelNumb', 'telNumb')
+            Column::make('Numer Telefonu', 'telNumb')
                 ->sortable()
                 ->searchable(),
 
@@ -81,28 +81,26 @@ final class CandidateTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Age', 'age')
+            Column::make('Wiek', 'age')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Math', 'math')
+            Column::make('Matematyka', 'math')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Polish', 'polish')
+            Column::make('J.Polski', 'polish')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('English', 'english')
+            Column::make('J.Angielski', 'english')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Created at', 'created_at')
+            Column::make('Data stworzenia', 'created_at')
                 ->sortable()
                 ->searchable(),
-            Column::make('User_id', 'user_id'),
-
-            Column::action('Action')
+            Column::action('')
         ];
     }
 

@@ -53,7 +53,7 @@ final class ZapisyTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
+            Column::make('Identyfikator Kandydatury', 'id'),
             Column::make('Numer kierunku', 'course_id')
                 ->sortable()
                 ->searchable(),
@@ -78,7 +78,7 @@ final class ZapisyTable extends PowerGridComponent
                 ->searchable()
                 ->editOnClick(auth()->user()?->can('worker access') ?? false),
 
-            Column::action('Action')
+            Column::action('')
         ];
     }
 

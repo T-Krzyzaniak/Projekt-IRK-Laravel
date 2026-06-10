@@ -61,24 +61,24 @@ final class WorkerTable extends PowerGridComponent
                 ->searchable()
                 ->sortable(),
 
-            Column::make('Name', 'name')
+            Column::make('Imie', 'name')
                 ->searchable()
                 ->sortable(),
-            Column::make('Surname', 'surname')
+            Column::make('Nazwisko', 'surname')
                 ->searchable()
                 ->sortable(),
-                Column::make('Position', 'position')
+                Column::make('Posada', 'position')
                 ->searchable()
                 ->sortable(),
-                Column::make('Number', 'telNumb')
+                Column::make('Numer Telefonu', 'telNumb')
                 ->searchable()
                 ->sortable(),
             
 
-            Column::make('Created at', 'created_at_formatted', 'created_at')
+            Column::make('Data dodania', 'created_at_formatted', 'created_at')
                 ->searchable(),
 
-            Column::action('Action')
+            Column::action('')
         ];
     }
 

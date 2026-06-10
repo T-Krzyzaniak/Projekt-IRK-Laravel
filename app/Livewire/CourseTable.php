@@ -49,8 +49,8 @@ final class CourseTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
-            Column::make('Name', 'name')
+            Column::make('Identyfikator kursu', 'id'),
+            Column::make('Kurs', 'name')
                 ->sortable()
                 ->searchable(),
 
@@ -70,7 +70,7 @@ final class CourseTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::action('Action')
+            Column::action('')
         ];
     }
 
@@ -120,7 +120,7 @@ public function delete($id): void
             'candidate_id'      => $candidate->id,
             'candidate_name'    => $candidate->name,   
             'candidate_surname' => $candidate->surname, 
-            'status' => 'pending',
+            'status' => 'Oczekuje',
             'user_id' => $candidate->user_id,
         ]);
 
@@ -132,7 +132,7 @@ public function delete($id): void
     {
         return [
             Button::add('edit')
-                ->slot('Edit: '.$row->id)
+                ->slot('Edytuj')
                 ->class('bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs')
                 ->route('course.edit', ['course' => $row->id]),
             Button::add('delete')
